@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{title}}</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+
+    <style>
+        hr{
+            margin: 10px 0px 30px 0px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Trade Account Program</h1>
+    <hr>
+    
+    <div class="my-table">
+        <table id="ajax_table" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Location</th>
+                    <th>Phone Number</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Country</th>
+                    <th>Occupation</th>
+                    <th>Company</th>
+                    <th>Company Url</th>
+                    <th>File Attachment</th>
+                    <th>Project Description</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+<script>
+$(document).ready(function(){
+    $('#ajax_table').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: {
+            url: '/load/getuserdata',
+            type: 'POST',
+        },
+        columns:[
+            {data: 'id'},
+            {data: 'firstname'},
+            {data: 'lastname'},
+            {data: 'location'},
+            {data: 'phone_number'},
+            {data: 'email'},
+            {data: 'password'},
+            {data: 'country_code'},
+            {data: 'occupation'},
+            {data: 'company'},
+            {data: 'company_url'},
+            {data: 'attachment'},
+            {data: 'project_description'},
+        ]
+    });
+});
+</script>
+</body>
+</html>
